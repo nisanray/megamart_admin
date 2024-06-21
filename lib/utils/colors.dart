@@ -1,6 +1,19 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
+  //Some fixed color here
+  static const Color sideBarColor = Color(0xfffbfaf8);//snow
+  static const Color backgroundColor = Color(0xffefefe7);//Isabelline
+
+
+
+
+
+
+
+
+
+
   static const Color blueColor = Color(0xFF2962FF);
   static const Color greenColor = Color(0xFF33B647);
   static const Color orangeColor = Color(0xFFFB8C00);
@@ -14,7 +27,6 @@ class AppColors {
   static const Color deepPurple = Color(0xFF6200EA); // Primary Color
   static const Color lightPurple = Color(0xFFBB86FC); // Primary Light Color
   static const Color darkPurple = Color(0xFF3700B3); // Primary Dark Color
-
   // Secondary colors
   static const Color teal = Color(0xFF03DAC6); // Secondary Color
   static const Color lightTeal = Color(0xFFB2DFDB); // Secondary Light Color

@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../utils/colors.dart';
-import '../../../utils/custom_progress_indicator.dart';
+import '../../../../utils/colors.dart';
+import '../../../../utils/custom_progress_indicator.dart';
 
 class ViewBanner extends StatefulWidget {
   const ViewBanner({super.key});

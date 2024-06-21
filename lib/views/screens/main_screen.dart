@@ -3,15 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:megamart_admin/utils/colors.dart';
 import 'package:megamart_admin/utils/custom_text_form_field.dart';
-import 'package:megamart_admin/views/screens/side_bar_screens/categories_screen.dart';
-import 'package:megamart_admin/views/screens/side_bar_screens/view_banner.dart';
-import 'package:megamart_admin/views/screens/side_bar_screens/view_category.dart';
+import 'package:megamart_admin/views/screens/side_bar_screens/banner/upload_banner_screen.dart';
+import 'package:megamart_admin/views/screens/side_bar_screens/banner/view_banner.dart';
+import 'package:megamart_admin/views/screens/side_bar_screens/category/categories_screen.dart';
+import 'package:megamart_admin/views/screens/side_bar_screens/category/view_category.dart';
+import 'package:megamart_admin/views/screens/side_bar_screens/orders/order_screen.dart';
+
 import 'package:megamart_admin/views/screens/side_bar_screens/dashboard_screen.dart';
-import 'package:megamart_admin/views/screens/side_bar_screens/order_screen.dart';
-import 'package:megamart_admin/views/screens/side_bar_screens/products_screen.dart';
-import 'package:megamart_admin/views/screens/side_bar_screens/upload_banner_screen.dart';
+import 'package:megamart_admin/views/screens/side_bar_screens/products/products_screen.dart';
 import 'package:megamart_admin/views/screens/side_bar_screens/vendors/vendor_screen.dart';
-import 'package:megamart_admin/views/screens/side_bar_screens/withdrawal_screen.dart';
+import 'package:megamart_admin/views/screens/side_bar_screens/withdrawal/withdrawal_screen.dart';
 import '../../utils/responsive_helper/responsive_helper.dart';
 
 class MainScreen extends StatefulWidget {
@@ -59,7 +60,7 @@ class _MainScreenState extends State<MainScreen> {
           _selectedScreenName = 'Categories';
           break;
         case OrderScreen.routeName:
-          _selectedItem = OrderScreen();
+          _selectedItem = OrderScreen(data: [],);
           _selectedScreenName = 'Orders';
           break;
         case ProductScreen.routeName:
@@ -75,7 +76,7 @@ class _MainScreenState extends State<MainScreen> {
           _selectedScreenName = 'Vendors';
           break;
         case WithdrawalScreen.routeName:
-          _selectedItem = WithdrawalScreen();
+          _selectedItem = WithdrawalScreen(data: [],);
           _selectedScreenName = 'Withdrawal';
           break;
         case ViewCategory.routeName:

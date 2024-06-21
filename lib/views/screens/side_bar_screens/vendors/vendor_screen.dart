@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '/utils/colors.dart';
 import '/utils/responsive_helper/responsive_helper.dart';
-import 'desktop_vendor.dart';
-import 'mobile_vendor.dart';
+import 'vendor_desktop_view.dart';
+import 'vendor_mobile_view.dart';
 
 class VendorScreen extends StatelessWidget {
   const VendorScreen({Key? key}) : super(key: key);

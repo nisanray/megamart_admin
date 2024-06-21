@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:megamart_admin/utils/colors.dart';
 import 'package:megamart_admin/utils/custom_text_form_field.dart';
-import '../../../utils/button_styles/button_styles.dart';
+import '../../../../utils/button_styles/button_styles.dart';
 
 class CategoriesScreen extends StatefulWidget {
   CategoriesScreen({Key? key}) : super(key: key);
