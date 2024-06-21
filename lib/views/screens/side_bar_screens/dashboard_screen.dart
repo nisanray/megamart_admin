@@ -17,7 +17,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        color: AppColors.backgroundGlitter,
+        color: AppColors.backgroundColor,
         width: HeightWidth.fullWidth(context),
         height: HeightWidth.fullHeight(context),
         child: Center(

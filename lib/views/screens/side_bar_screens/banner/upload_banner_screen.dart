@@ -93,7 +93,7 @@ class _UploadBannerScreenState extends State<UploadBannerScreen> {
   Widget build(BuildContext context) {
     double maxImageWidth = MediaQuery.of(context).size.width * 0.5;
     return Container(
-      color: AppColors.sidebarAntiFlashWhite,
+      color: AppColors.backgroundColor,
         padding: EdgeInsets.all(16),
         child: SingleChildScrollView(
           child: Column(

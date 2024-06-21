@@ -20,7 +20,7 @@ class _ViewBannerState extends State<ViewBanner> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.backgroundGlitter,
+      color: AppColors.backgroundColor,
       child: StreamBuilder<QuerySnapshot>(
         stream: _bannerStream,
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {

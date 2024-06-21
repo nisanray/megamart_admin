@@ -114,7 +114,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
     double maxImageWidth = MediaQuery.of(context).size.width * 0.5;
 
     return Container(
-      color: AppColors.whiteSmoak,
+      color: AppColors.backgroundColor,
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
       child: SingleChildScrollView(

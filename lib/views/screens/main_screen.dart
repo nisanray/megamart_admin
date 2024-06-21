@@ -106,94 +106,108 @@ class _MainScreenState extends State<MainScreen> {
 
     return SafeArea(
       child: Scaffold(
+        backgroundColor: AppColors.backgroundColor,
         body: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AnimatedContainer(
-              height: MediaQuery.of(context).size.height,
-              decoration: BoxDecoration(
-                color: AppColors.sidebarAntiFlashWhite,
-                border: Border(
-                  right: BorderSide(color: Color(0xFFdddcdc)),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: AnimatedContainer(
+
+                height: MediaQuery.of(context).size.height,
+                decoration: BoxDecoration(
+                  color: AppColors.sideBarColor,
+                  border: Border(
+                    right: BorderSide(color: Color(0xFFdddcdc)),
+                    top: BorderSide(color: Color(0xFFdddcdc)),
+                    left: BorderSide(color: Color(0xFFdddcdc)),
+                    bottom: BorderSide(color: Color(0xFFdddcdc)),
+
+                  ),
+                  borderRadius: BorderRadius.circular(10)
                 ),
-              ),
-              duration: Duration(milliseconds: 600),
-              width: _isSidebarOpen ? 220 : 0,
-              child: _isSidebarOpen
-                  ? SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Container(
-                      height: 120,
-                      width: MediaQuery.of(context).size.width,
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 20, bottom: 20),
-                        child: Image.asset(
-                          'assets/logo/logo.png',
-                          color: Color(0xff3860ff),
+                duration: Duration(milliseconds: 600),
+                width: _isSidebarOpen ? 220 : 0,
+                child: _isSidebarOpen
+                    ? SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 120,
+                        width: MediaQuery.of(context).size.width,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 20, bottom: 20),
+                          child: Image.asset(
+                            'assets/logo/logo.png',
+                            color: Color(0xff3860ff),
+                          ),
                         ),
                       ),
-                    ),
-                    customSidebarItem('Dashboard', Icons.dashboard_outlined, DashboardScreen.routeName),
-                    customSidebarItem('Vendors', CupertinoIcons.person_3, VendorScreen.routeName),
-                    customSidebarItem('Withdrawal', Icons.money, WithdrawalScreen.routeName),
-                    customSidebarItem('Orders', Icons.shopping_cart_outlined, OrderScreen.routeName),
-                    customSidebarItem('Categories', Icons.category_outlined, CategoriesScreen.routeName),
-                    customSidebarItem('Products', CupertinoIcons.shopping_cart, ProductScreen.routeName),
-                    customSidebarItem('Upload Banners', Icons.add_a_photo_outlined, UploadBannerScreen.routeName),
-                    customSidebarItem('View Category', Icons.remove_red_eye, ViewCategory.routeName),
-                    customSidebarItem('View Banners', Icons.remove_red_eye, ViewBanner.routeName),
-                  ],
-                ),
-              )
-                  : SizedBox.shrink(),
+                      customSidebarItem('Dashboard', Icons.dashboard_outlined, DashboardScreen.routeName),
+                      customSidebarItem('Vendors', CupertinoIcons.person_3, VendorScreen.routeName),
+                      customSidebarItem('Withdrawal', Icons.money, WithdrawalScreen.routeName),
+                      customSidebarItem('Orders', Icons.shopping_cart_outlined, OrderScreen.routeName),
+                      customSidebarItem('Categories', Icons.category_outlined, CategoriesScreen.routeName),
+                      customSidebarItem('Products', CupertinoIcons.shopping_cart, ProductScreen.routeName),
+                      customSidebarItem('Upload Banners', Icons.add_a_photo_outlined, UploadBannerScreen.routeName),
+                      customSidebarItem('View Category', Icons.remove_red_eye, ViewCategory.routeName),
+                      customSidebarItem('View Banners', Icons.remove_red_eye, ViewBanner.routeName),
+                    ],
+                  ),
+                )
+                    : SizedBox.shrink(),
+              ),
             ),
             Expanded(
               child: Column(
                 children: [
-                  Container(
-                    height: 60,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      color: AppColors.sidebarAntiFlashWhite,
-                      border: Border(bottom: BorderSide(color: Color(0xFFd0d3d6))),
-                    ),
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: IconButton(
-                            icon: Icon(Icons.menu, color: AppColors.onyx),
-                            onPressed: toggleSidebar,
-                          ),
-                        ),
-                        if (!_isSidebarOpen || isScreenWide)
-                          Expanded(
-                            child: Center(
-                              child: Text(
-                                _selectedScreenName,
-                                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                              ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 60,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        color: AppColors.sideBarColor,
+                        border: Border.all(color: Color(0xFFd0d3d6),),
+                        borderRadius: BorderRadius.circular(10)
+                      ),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: IconButton(
+                              icon: Icon(Icons.menu, color: AppColors.onyx),
+                              onPressed: toggleSidebar,
                             ),
                           ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            IconButton(
-                              icon: Icon(Icons.notifications, color: AppColors.onyx),
-                              onPressed: () {
-                                // Handle notification icon tap
-                              },
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8),
-                              child: CircleAvatar(
-                                // backgroundImage: AssetImage('assets/profile_pic.png'), // Replace with user's profile picture
+                          if (!_isSidebarOpen || isScreenWide)
+                            Expanded(
+                              child: Center(
+                                child: Text(
+                                  _selectedScreenName,
+                                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                ),
                               ),
                             ),
-                          ],
-                        ),
-                      ],
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              IconButton(
+                                icon: Icon(Icons.notifications, color: AppColors.onyx),
+                                onPressed: () {
+                                  // Handle notification icon tap
+                                },
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: CircleAvatar(
+                                  // backgroundImage: AssetImage('assets/profile_pic.png'), // Replace with user's profile picture
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   Expanded(
@@ -216,7 +230,7 @@ class _MainScreenState extends State<MainScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Container(
         decoration: BoxDecoration(
-          color: isSelected ? Color(0xff879fff) : Colors.transparent,
+          color: isSelected ? AppColors.blueColor : Colors.transparent,
           borderRadius: BorderRadius.circular(10),
         ),
         child: ListTile(

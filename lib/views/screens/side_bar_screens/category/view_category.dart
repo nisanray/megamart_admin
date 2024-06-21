@@ -18,7 +18,7 @@ class _ViewCategoryState extends State<ViewCategory> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.backgroundGlitter,
+      color: AppColors.backgroundColor,
       child: StreamBuilder<QuerySnapshot>(
         stream: _categoryStream,
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {

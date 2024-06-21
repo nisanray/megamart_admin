@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   //Some fixed color here
-  static const Color sideBarColor = Color(0xfffbfaf8);//snow
-  static const Color backgroundColor = Color(0xffefefe7);//Isabelline
+  // static const Color sideBarColor = Color(0xfffbfaf8);//snow
+  // static const Color sideBarColor = Color(0xfff9f3ff);//magnolia
+  static const Color sideBarColor = Color(0xfff8f9fe);//ghost white
+  // static const Color backgroundColor = Color(0xffefefe7);//Isabelline
+  // static const Color backgroundColor = Color(0xffEEFF2FE);//ALICE BLUE
+  static const Color backgroundColor = Color(0xfff0e6ff);//lavender
 
 
 

@@ -17,7 +17,7 @@ class OrderScreen extends StatelessWidget {
     return Container(
       alignment: Alignment.topLeft,
       padding: EdgeInsets.all(10),
-      color: AppColors.backgroundGlitter,
+      color: AppColors.backgroundColor,
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
       child: ResponsiveHelper.isDesktop(context) ? OrderDesktopView(data: [],) : OrderMobileView(data: [],),
