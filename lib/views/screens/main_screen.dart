@@ -2,27 +2,45 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:megamart_admin/utils/colors.dart';
-import 'package:megamart_admin/utils/custom_text_form_field.dart';
-import 'package:megamart_admin/views/screens/side_bar_screens/banner/upload_banner_screen.dart';
-import 'package:megamart_admin/views/screens/side_bar_screens/banner/view_banner.dart';
-import 'package:megamart_admin/views/screens/side_bar_screens/category/categories_screen.dart';
-import 'package:megamart_admin/views/screens/side_bar_screens/category/view_category.dart';
-import 'package:megamart_admin/views/screens/side_bar_screens/orders/order_screen.dart';
+// import 'package:megamart_admin/utils/custom_text_form_field.dart';
+import 'package:megamart_admin/views/admin_analytics_view.dart';
+import 'package:megamart_admin/views/admin_dashboards.dart';
+import 'package:megamart_admin/views/admin_loyalty_programs_view.dart';
+import 'package:megamart_admin/views/admin_notification_center_view.dart';
+import 'package:megamart_admin/views/admin_order_management_view.dart';
+import 'package:megamart_admin/views/admin_payment_shipping_management_view.dart';
+import 'package:megamart_admin/views/admin_product_management_view.dart';
+import 'package:megamart_admin/views/admin_settings_view.dart';
+import 'package:megamart_admin/views/admin_support_tickets_view.dart';
+import 'package:megamart_admin/views/admin_user_management_view.dart';
+import 'package:megamart_admin/views/admin_vendor_approval_view.dart';
+import 'package:megamart_admin/views/customer_cart_view.dart';
+import 'package:megamart_admin/views/customer_loyalty_programs_view.dart';
+import 'package:megamart_admin/views/customer_notifications_view.dart';
+import 'package:megamart_admin/views/customer_order_management_view.dart';
+import 'package:megamart_admin/views/customer_product_browsing_view.dart';
+import 'package:megamart_admin/views/customer_profile_management_view.dart';
+import 'package:megamart_admin/views/customer_reviews_ratings_view.dart';
+import 'package:megamart_admin/views/customer_support_tickets_view.dart';
+import 'package:megamart_admin/views/customer_wishlist_view.dart';
+import 'package:megamart_admin/views/screens/sidebar_updated/sidebar_navigations.dart';
+import 'package:megamart_admin/views/vendor_notifications_view.dart';
+import 'package:megamart_admin/views/vendor_order_management_view.dart';
+import 'package:megamart_admin/views/vendor_product_management_view.dart';
+import 'package:megamart_admin/views/vendor_profile_management_view.dart';
+import 'package:megamart_admin/views/vendor_shipping_methods_view.dart';
+import 'package:megamart_admin/views/vendor_support_tickets_view.dart';
 
-import 'package:megamart_admin/views/screens/side_bar_screens/dashboard_screen.dart';
-import 'package:megamart_admin/views/screens/side_bar_screens/products/products_screen.dart';
-import 'package:megamart_admin/views/screens/side_bar_screens/vendors/vendor_screen.dart';
-import 'package:megamart_admin/views/screens/side_bar_screens/withdrawal/withdrawal_screen.dart';
-import '../../utils/responsive_helper/responsive_helper.dart';
+import '../../../utils/responsive_helper/responsive_helper.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+class SideBarNavigation extends StatefulWidget {
+  const SideBarNavigation({Key? key}) : super(key: key);
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<SideBarNavigation> createState() => _SideBarNavigation();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _SideBarNavigation extends State<SideBarNavigation> {
   late Widget _selectedItem;
   late String _selectedRoute;
   late String _selectedScreenName;
@@ -31,9 +49,9 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
-    _selectedItem = DashboardScreen();
-    _selectedRoute = DashboardScreen.routeName;
-    _selectedScreenName = 'Dashboard';
+    _selectedItem = AdminDashboardView();
+    _selectedRoute = AdminDashboardView.routeName;
+    _selectedScreenName = 'Admin Dashboard';
   }
 
   @override
@@ -51,45 +69,122 @@ class _MainScreenState extends State<MainScreen> {
     setState(() {
       _selectedRoute = route;
       switch (route) {
-        case DashboardScreen.routeName:
-          _selectedItem = DashboardScreen();
+        case AdminDashboardView.routeName:
+          _selectedItem = AdminDashboardView();
           _selectedScreenName = 'Dashboard';
           break;
-        case CategoriesScreen.routeName:
-          _selectedItem = CategoriesScreen();
-          _selectedScreenName = 'Categories';
+        case AdminAnalyticsView.routeName:
+          _selectedItem = AdminAnalyticsView();
+          _selectedScreenName = 'Admin Analytics';
           break;
-        case OrderScreen.routeName:
-          _selectedItem = OrderScreen(data: [],);
-          _selectedScreenName = 'Orders';
+        case AdminLoyaltyProgramsView.routeName:
+          _selectedItem = AdminLoyaltyProgramsView();
+          _selectedScreenName = 'Admin Loyalty Programs View';
           break;
-        case ProductScreen.routeName:
-          _selectedItem = ProductScreen();
-          _selectedScreenName = 'Products';
+
+
+          case AdminNotificationCenterView.routeName:
+          _selectedItem = AdminNotificationCenterView();
+          _selectedScreenName = 'Admin Notification Center';
           break;
-        case UploadBannerScreen.routeName:
-          _selectedItem = UploadBannerScreen();
-          _selectedScreenName = 'Upload Banners';
+
+
+        case AdminOrderManagementView.routeName:
+          _selectedItem = AdminOrderManagementView();
+          _selectedScreenName = 'Admin Order Management';
           break;
-        case VendorScreen.routeName:
-          _selectedItem = VendorScreen();
-          _selectedScreenName = 'Vendors';
+        case AdminPaymentShippingManagementView.routeName:
+          _selectedItem = AdminPaymentShippingManagementView();
+          _selectedScreenName = 'Admin Payment Shipping';
           break;
-        case WithdrawalScreen.routeName:
-          _selectedItem = WithdrawalScreen(data: [],);
-          _selectedScreenName = 'Withdrawal';
+        case AdminProductManagementView.routeName:
+          _selectedItem = AdminProductManagementView();
+          _selectedScreenName = 'Admin Product Management';
           break;
-        case ViewCategory.routeName:
-          _selectedItem = ViewCategory();
-          _selectedScreenName = 'View Category';
+        case AdminSettingsView.routeName:
+          _selectedItem = AdminSettingsView();
+          _selectedScreenName = 'Admin Settings';
           break;
-          case ViewBanner.routeName:
-          _selectedItem = ViewBanner();
-          _selectedScreenName = 'View Banner';
+        case AdminSupportTicketsView.routeName:
+          _selectedItem = AdminSupportTicketsView();
+          _selectedScreenName = 'Admin SupportTickets';
           break;
+        case AdminUserManagementView.routeName:
+          _selectedItem = AdminUserManagementView();
+          _selectedScreenName = 'Admin User Mangement view';
+          break;
+        case AdminVendorApprovalView.routeName:
+          _selectedItem = AdminVendorApprovalView();
+          _selectedScreenName = 'Admin Vendor Approval';
+          break;
+        case CustomerCartView.routeName:
+          _selectedItem = CustomerCartView();
+          _selectedScreenName = 'Customer Cart';
+          break;
+        case CustomerLoyaltyProgramsView.routeName:
+          _selectedItem = CustomerLoyaltyProgramsView();
+          _selectedScreenName = '';
+          break;
+        case CustomerNotificationsView.routeName:
+          _selectedItem = CustomerNotificationsView();
+          _selectedScreenName = 'Customer Notification';
+          break;
+        case CustomerOrderManagementView.routeName:
+          _selectedItem = CustomerOrderManagementView();
+          _selectedScreenName = 'Customer Order Management';
+          break;
+        case CustomerProductBrowsingView.routeName:
+          _selectedItem = CustomerProductBrowsingView();
+          _selectedScreenName = 'Customer Product Browsing';
+          break;
+        case CustomerProfileManagementView.routeName:
+          _selectedItem = CustomerProfileManagementView();
+          _selectedScreenName = 'Customer Profile Management';
+          break;
+        case CustomerReviewsRatingsView.routeName:
+          _selectedItem = CustomerReviewsRatingsView();
+          _selectedScreenName = 'Customer Review And Ratings';
+          break;
+        case CustomerSupportTicketsView.routeName:
+          _selectedItem = CustomerSupportTicketsView();
+          _selectedScreenName = 'Customer Support Ticket';
+          break;
+        case CustomerWishlistView.routeName:
+          _selectedItem = CustomerWishlistView();
+          _selectedScreenName = 'CustomerWishList';
+          break;
+        case VendorDashboardScreen.routeName:
+          _selectedItem = VendorDashboardScreen();
+          _selectedScreenName = 'Vendor Dashboard';
+          break;
+        case VendorNotificationsView.routeName:
+          _selectedItem = VendorNotificationsView();
+          _selectedScreenName = 'Vendor Notification';
+          break;
+        case VendorOrderManagementView.routeName:
+          _selectedItem = VendorOrderManagementView();
+          _selectedScreenName = 'Vendor Order Management';
+          break;
+        case VendorProductManagementView.routeName:
+          _selectedItem = VendorProductManagementView();
+          _selectedScreenName = 'Vendor Product Management';
+          break;
+        case VendorProfileManagementView.routeName:
+          _selectedItem = VendorProfileManagementView();
+          _selectedScreenName = '';
+          break;
+        case VendorShippingMethodsView.routeName:
+          _selectedItem = VendorShippingMethodsView();
+          _selectedScreenName = 'Vendor Shipping Methods';
+          break;
+        case VendorSupportTicketsView.routeName:
+          _selectedItem = VendorSupportTicketsView();
+          _selectedScreenName = 'Vendor Support Ticket';
+          break;
+
         default:
-          _selectedItem = DashboardScreen();
-          _selectedScreenName = 'Dashboard';
+          _selectedItem = AdminDashboardView();
+          _selectedScreenName = 'Admin Dashboard';
       }
     });
   }
@@ -116,18 +211,18 @@ class _MainScreenState extends State<MainScreen> {
 
                 height: MediaQuery.of(context).size.height,
                 decoration: BoxDecoration(
-                  color: AppColors.sideBarColor,
-                  border: Border(
-                    right: BorderSide(color: Color(0xFFdddcdc)),
-                    top: BorderSide(color: Color(0xFFdddcdc)),
-                    left: BorderSide(color: Color(0xFFdddcdc)),
-                    bottom: BorderSide(color: Color(0xFFdddcdc)),
+                    color: AppColors.sideBarColor,
+                    border: Border(
+                      right: BorderSide(color: Color(0xFFdddcdc)),
+                      top: BorderSide(color: Color(0xFFdddcdc)),
+                      left: BorderSide(color: Color(0xFFdddcdc)),
+                      bottom: BorderSide(color: Color(0xFFdddcdc)),
 
-                  ),
-                  borderRadius: BorderRadius.circular(10)
+                    ),
+                    borderRadius: BorderRadius.circular(10)
                 ),
                 duration: Duration(milliseconds: 600),
-                width: _isSidebarOpen ? 220 : 0,
+                width: _isSidebarOpen ? 300 : 0,
                 child: _isSidebarOpen
                     ? SingleChildScrollView(
                   child: Column(
@@ -143,15 +238,51 @@ class _MainScreenState extends State<MainScreen> {
                           ),
                         ),
                       ),
-                      customSidebarItem('Dashboard', Icons.dashboard_outlined, DashboardScreen.routeName),
-                      customSidebarItem('Vendors', CupertinoIcons.person_3, VendorScreen.routeName),
-                      customSidebarItem('Withdrawal', Icons.money, WithdrawalScreen.routeName),
-                      customSidebarItem('Orders', Icons.shopping_cart_outlined, OrderScreen.routeName),
-                      customSidebarItem('Categories', Icons.category_outlined, CategoriesScreen.routeName),
-                      customSidebarItem('Products', CupertinoIcons.shopping_cart, ProductScreen.routeName),
-                      customSidebarItem('Upload Banners', Icons.add_a_photo_outlined, UploadBannerScreen.routeName),
-                      customSidebarItem('View Category', Icons.remove_red_eye, ViewCategory.routeName),
-                      customSidebarItem('View Banners', Icons.remove_red_eye, ViewBanner.routeName),
+                      customSidebarItem('Admin Dashboard', Icons.dashboard_outlined, AdminDashboardView.routeName),
+                      ExpansionTile(
+                        title: Text('Admin Management'),
+                        leading: Icon(Icons.admin_panel_settings_outlined),
+                        children: [
+                          customSidebarItem('Admin Analytics', Icons.analytics_outlined, AdminAnalyticsView.routeName),
+                          customSidebarItem('Admin Loyalty Programs', Icons.loyalty_outlined, AdminLoyaltyProgramsView.routeName),
+                          customSidebarItem('Admin Notification Center', Icons.notifications_outlined, AdminNotificationCenterView.routeName),
+                          customSidebarItem('Admin Order Management', Icons.receipt_long_outlined, AdminOrderManagementView.routeName),
+                          customSidebarItem('Admin Payment Shipping', Icons.local_shipping_outlined, AdminPaymentShippingManagementView.routeName),
+                          customSidebarItem('Admin Product Management', Icons.production_quantity_limits_outlined, AdminProductManagementView.routeName),
+                          customSidebarItem('Admin Settings', Icons.settings_outlined, AdminSettingsView.routeName),
+                          customSidebarItem('Admin Support Tickets', Icons.support_agent_outlined, AdminSupportTicketsView.routeName),
+                          customSidebarItem('Admin User Management', Icons.supervised_user_circle_outlined, AdminUserManagementView.routeName),
+                          customSidebarItem('Admin Vendor Approval', Icons.verified_outlined, AdminVendorApprovalView.routeName),
+                        ],
+                      ),
+                      ExpansionTile(
+                        title: Text('Customer Management'),
+                        leading: Icon(Icons.people_outline),
+                        children: [
+                          customSidebarItem('Customer Cart', Icons.shopping_cart_outlined, CustomerCartView.routeName),
+                          customSidebarItem('Customer Loyalty Programs', Icons.card_giftcard_outlined, CustomerLoyaltyProgramsView.routeName),
+                          customSidebarItem('Customer Notifications', Icons.notifications_outlined, CustomerNotificationsView.routeName),
+                          customSidebarItem('Customer Order Management', Icons.receipt_long_outlined, CustomerOrderManagementView.routeName),
+                          customSidebarItem('Customer Product Browsing', Icons.shop_outlined, CustomerProductBrowsingView.routeName),
+                          customSidebarItem('Customer Profile Management', Icons.person_outline, CustomerProfileManagementView.routeName),
+                          customSidebarItem('Customer Reviews Ratings', Icons.star_outline, CustomerReviewsRatingsView.routeName),
+                          customSidebarItem('Customer Support Tickets', Icons.support_agent_outlined, CustomerSupportTicketsView.routeName),
+                          customSidebarItem('Customer Wishlist', Icons.favorite_outline, CustomerWishlistView.routeName),
+                        ],
+                      ),
+                      ExpansionTile(
+                        title: Text('Vendor Management'),
+                        leading: Icon(Icons.storefront_outlined),
+                        children: [
+                          customSidebarItem('Vendor Dashboard', Icons.dashboard_outlined, VendorDashboardScreen.routeName),
+                          customSidebarItem('Vendor Notifications', Icons.notifications_outlined, VendorNotificationsView.routeName),
+                          customSidebarItem('Vendor Order Management', Icons.receipt_long_outlined, VendorOrderManagementView.routeName),
+                          customSidebarItem('Vendor Product Management', Icons.production_quantity_limits_outlined, VendorProductManagementView.routeName),
+                          customSidebarItem('Vendor Profile Management', Icons.person_outline, VendorProfileManagementView.routeName),
+                          customSidebarItem('Vendor Shipping Methods', Icons.local_shipping_outlined, VendorShippingMethodsView.routeName),
+                          customSidebarItem('Vendor Support Tickets', Icons.support_agent_outlined, VendorSupportTicketsView.routeName),
+                        ],
+                      ),
                     ],
                   ),
                 )
@@ -167,9 +298,9 @@ class _MainScreenState extends State<MainScreen> {
                       height: 60,
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
-                        color: AppColors.sideBarColor,
-                        border: Border.all(color: Color(0xFFd0d3d6),),
-                        borderRadius: BorderRadius.circular(10)
+                          color: AppColors.sideBarColor,
+                          border: Border.all(color: Color(0xFFd0d3d6),),
+                          borderRadius: BorderRadius.circular(10)
                       ),
                       child: Row(
                         children: [

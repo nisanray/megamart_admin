@@ -1,36 +1,80 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:megamart_admin/firebase_options.dart';
-// import 'package:megamart_admin/screens/home.dart';
+import 'package:megamart_admin/views/admin_analytics_view.dart';
+import 'package:megamart_admin/views/admin_dashboards.dart';
+import 'package:megamart_admin/views/admin_loyalty_programs_view.dart';
+import 'package:megamart_admin/views/admin_notification_center_view.dart';
+import 'package:megamart_admin/views/admin_order_management_view.dart';
+import 'package:megamart_admin/views/admin_payment_shipping_management_view.dart';
+import 'package:megamart_admin/views/admin_product_management_view.dart';
+import 'package:megamart_admin/views/admin_settings_view.dart';
+import 'package:megamart_admin/views/admin_support_tickets_view.dart';
+import 'package:megamart_admin/views/admin_user_management_view.dart';
+import 'package:megamart_admin/views/admin_vendor_approval_view.dart';
+import 'package:megamart_admin/views/customer_cart_view.dart';
+import 'package:megamart_admin/views/customer_loyalty_programs_view.dart';
+import 'package:megamart_admin/views/customer_notifications_view.dart';
+import 'package:megamart_admin/views/customer_order_management_view.dart';
+import 'package:megamart_admin/views/customer_product_browsing_view.dart';
+import 'package:megamart_admin/views/customer_profile_management_view.dart';
+import 'package:megamart_admin/views/customer_reviews_ratings_view.dart';
+import 'package:megamart_admin/views/customer_support_tickets_view.dart';
+import 'package:megamart_admin/views/customer_wishlist_view.dart';
 import 'package:megamart_admin/views/screens/main_screen.dart';
-import 'package:megamart_admin/views/screens/something.dart';
+// import 'package:megamart_admin/views/screens/sidebar_updated/sidebar_navigations.dart';
+import 'package:megamart_admin/views/vendor_dashboard_view.dart';
+import 'package:megamart_admin/views/vendor_notifications_view.dart';
+import 'package:megamart_admin/views/vendor_order_management_view.dart';
+import 'package:megamart_admin/views/vendor_product_management_view.dart';
+import 'package:megamart_admin/views/vendor_profile_management_view.dart';
+import 'package:megamart_admin/views/vendor_shipping_methods_view.dart';
+import 'package:megamart_admin/views/vendor_support_tickets_view.dart';
 
-Future<void> main() async {
-
-
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  runApp(const MyApp());
+void main() {
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'E-commerce App',
       theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-          primarySwatch: Colors.blue),debugShowCheckedModeBanner: false,
-      // home: MainScreen(),
-      home: AdminDashboard(),
-      builder: EasyLoading.init(),
-      // home: HomeScreen(),
+        primarySwatch: Colors.blue,
+      ),
+      home: SideBarNavigation(),
+      // initialRoute: '/admin/dashboard', // Initial route for admin dashboard
+      // routes: {
+      //   // Admin routes
+      //   '/admin/dashboard': (context) => AdminDashboardView(),
+      //   '/admin/user_management': (context) => AdminUserManagementView(),
+      //   '/admin/vendor_approval': (context) => AdminVendorApprovalView(),
+      //   '/admin/product_management': (context) => AdminProductManagementView(),
+      //   '/admin/order_management': (context) => AdminOrderManagementView(),
+      //   '/admin/analytics': (context) => AdminAnalyticsView(),
+      //   '/admin/support_tickets': (context) => AdminSupportTicketsView(),
+      //   '/admin/notification_center': (context) => AdminNotificationCenterView(),
+      //   '/admin/settings': (context) => AdminSettingsView(),
+      //   '/admin/loyalty_programs': (context) => AdminLoyaltyProgramsView(),
+      //   '/admin/payment_shipping_management': (context) => AdminPaymentShippingManagementView(),
+      //   // Vendor routes
+      //   '/vendor/dashboard': (context) => VendorDashboardView(),
+      //   '/vendor/profile_management': (context) => VendorProfileManagementView(),
+      //   '/vendor/product_management': (context) => VendorProductManagementView(),
+      //   '/vendor/order_management': (context) => VendorOrderManagementView(),
+      //   '/vendor/shipping_methods': (context) => VendorShippingMethodsView(),
+      //   '/vendor/notifications': (context) => VendorNotificationsView(),
+      //   '/vendor/support_tickets': (context) => VendorSupportTicketsView(),
+      //   // Customer routes
+      //   '/customer/profile_management': (context) => CustomerProfileManagementView(),
+      //   '/customer/product_browsing': (context) => CustomerProductBrowsingView(),
+      //   '/customer/cart': (context) => CustomerCartView(),
+      //   '/customer/wishlist': (context) => CustomerWishlistView(),
+      //   '/customer/order_management': (context) => CustomerOrderManagementView(),
+      //   '/customer/reviews_ratings': (context) => CustomerReviewsRatingsView(),
+      //   '/customer/notifications': (context) => CustomerNotificationsView(),
+      //   '/customer/loyalty_programs': (context) => CustomerLoyaltyProgramsView(),
+      //   '/customer/support_tickets': (context) => CustomerSupportTicketsView(),
+      // },
     );
   }
 }
