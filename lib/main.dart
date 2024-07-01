@@ -1,4 +1,6 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'firebase_options.dart';
 import 'package:megamart_admin/views/admin_analytics_view.dart';
 import 'package:megamart_admin/views/admin_dashboards.dart';
 import 'package:megamart_admin/views/admin_loyalty_programs_view.dart';
@@ -16,10 +18,10 @@ import 'package:megamart_admin/views/customer_notifications_view.dart';
 import 'package:megamart_admin/views/customer_order_management_view.dart';
 import 'package:megamart_admin/views/customer_product_browsing_view.dart';
 import 'package:megamart_admin/views/customer_profile_management_view.dart';
-import 'package:megamart_admin/views/customer_reviews_ratings_view.dart';
+// import 'package:megamart_admin/views/customer_revies_ratings_view.dart';
 import 'package:megamart_admin/views/customer_support_tickets_view.dart';
 import 'package:megamart_admin/views/customer_wishlist_view.dart';
-import 'package:megamart_admin/views/screens/main_screen.dart';
+import 'package:megamart_admin/views/main_screen.dart';
 // import 'package:megamart_admin/views/screens/sidebar_updated/sidebar_navigations.dart';
 import 'package:megamart_admin/views/vendor_dashboard_view.dart';
 import 'package:megamart_admin/views/vendor_notifications_view.dart';
@@ -29,7 +31,11 @@ import 'package:megamart_admin/views/vendor_profile_management_view.dart';
 import 'package:megamart_admin/views/vendor_shipping_methods_view.dart';
 import 'package:megamart_admin/views/vendor_support_tickets_view.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 
@@ -41,6 +47,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      debugShowCheckedModeBanner: false,
       home: SideBarNavigation(),
       // initialRoute: '/admin/dashboard', // Initial route for admin dashboard
       // routes: {

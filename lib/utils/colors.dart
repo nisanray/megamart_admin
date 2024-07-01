@@ -53,7 +53,7 @@ class AppColors {
   static const Color almostWhite = Color(0xFFFAFAFA); // Almost White
   static const Color ivory = Color(0xFFFFFFF0); // Ivory
   static const Color floralWhite = Color(0xFFFFFAF0); // Floral White
-  static const Color snow = Color(0xFFFFFAFA); // Snow
+  static const Color snow = Color(0xFFFbFAF8); // Snow
   static const Color ghostWhite = Color(0xFFF8F8FF); // Ghost White
   static const Color azure = Color(0xFFF0FFFF); // Azure
   static const Color mintCream = Color(0xFFF5FFFA); // Mint Cream
@@ -67,6 +67,8 @@ class AppColors {
   static const Color whiteSmoak = Color(0xFFF6F7F8);
   static const Color darkJungleGreen = Color(0xFF232323);
   static const Color onyx =Color(0xFF0D0D0D);
+  static const Color oldlace = Color(0xfffbf5e7);
+
 
   // Dark colors
   static const Color charcoal = Color(0xFF36454F); // Charcoal
@@ -149,4 +151,5 @@ class AppColors {
   static const List<Color> skyGradient = [Color(0xFF87CEEB), Color(0xFF87CEFA)]; // Sky Gradient
   static const List<Color> pinkGradient = [pink, lightPink]; // Pink Gradient
   static const List<Color> blushPinkGradient = [blushPink, lightPink]; // Blush Pink Gradient
+   // Blush Pink Gradient
 }
