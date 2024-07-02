@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'add_category.dart';
+import 'admin_add_category.dart';
 import 'category_details.dart';
 
 class CategoryView extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import 'add_category.dart';
+import 'admin_add_category.dart';
 import 'category_details.dart';
 
 class AdminCategoryManagementView extends StatefulWidget {

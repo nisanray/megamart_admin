@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:megamart_admin/views/admin_application_view.dart';
 import 'package:megamart_admin/views/admin_approval_of_vendor.dart';
-import 'package:megamart_admin/views/screens/add_category.dart';
-import 'package:megamart_admin/views/screens/view_category.dart';
+import 'package:megamart_admin/views/screens/admin_add_category.dart';
+import 'package:megamart_admin/views/screens/admin_view_category.dart';
 // import 'package:megamart_admin/views/screens/category_view.dart';
 
 class AdminDashboardView extends StatelessWidget {
