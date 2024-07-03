@@ -227,7 +227,7 @@ class VendorDetail extends StatelessWidget {
             padding: EdgeInsets.symmetric(vertical: 16),
             textStyle: TextStyle(fontSize: 18),
           ),
-          child: Text(title),
+          child: Text(title,style: TextStyle(color: Colors.white),),
         ),
       ),
     );

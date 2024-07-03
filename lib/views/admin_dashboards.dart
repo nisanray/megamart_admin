@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:megamart_admin/views/admin_application_view.dart';
-import 'package:megamart_admin/views/admin/admin_vendor_approval_list.dart';
+// import 'package:megamart_admin/views/admin/admin_vendor_approval_list.dart';
 import 'package:megamart_admin/views/admin/admin_add_category.dart';
 import 'package:megamart_admin/views/admin/admin_view_category.dart';
 // import 'package:megamart_admin/views/screens/category_view.dart';

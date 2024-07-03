@@ -114,7 +114,7 @@ class VendorDetails extends StatelessWidget {
                 vendor['nidImageUrl'] != null
                     ? Padding(
                         padding: const EdgeInsets.symmetric(vertical: 16.0),
-                       
+
                         child: Image.network(vendor['nidImageUrl']),
                       )
                     : Text('No NID image uploaded', style: TextStyle(fontSize: 18, color: Colors.red)),

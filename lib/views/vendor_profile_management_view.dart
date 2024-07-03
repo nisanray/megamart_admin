@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'vendor_detail.dart';
+import 'vendor/vendor_detail.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 
