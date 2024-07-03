@@ -14,7 +14,7 @@ import 'package:megamart_admin/views/admin_product_management_view.dart';
 import 'package:megamart_admin/views/admin_settings_view.dart';
 import 'package:megamart_admin/views/admin_support_tickets_view.dart';
 import 'package:megamart_admin/views/admin_user_management_view.dart';
-import 'package:megamart_admin/views/admin_vendor_approval_view.dart';
+import 'package:megamart_admin/views/admin/admin_vendor_approval_all_details.dart';
 import 'package:megamart_admin/views/customer_cart_view.dart';
 import 'package:megamart_admin/views/customer_loyalty_programs_view.dart';
 import 'package:megamart_admin/views/customer_notifications_view.dart';
