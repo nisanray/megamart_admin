@@ -41,10 +41,10 @@ class CategoryProductsPage extends StatelessWidget {
           return Center(child: CircularProgressIndicator());
         }
         if (snapshot.hasError) {
-          return Text('Error: ${snapshot.error}');
+          return Center(child: Text('Error: ${snapshot.error}'));
         }
         if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-          return Text('No products found for this category.');
+          return Center(child: Text('No products found for this category.'));
         }
 
         var products = snapshot.data!.docs;
@@ -53,12 +53,10 @@ class CategoryProductsPage extends StatelessWidget {
           itemCount: products.length,
           itemBuilder: (context, index) {
             var product = products[index];
-            var productName = product['fixedFields']
-                .firstWhere((field) => field['fieldName'] == 'Product Name')['value'] ?? '';
-            var productPrice = product['fixedFields']
-                .firstWhere((field) => field['fieldName'] == 'Regular Price')['value'] ?? '';
-            var productImageUrl = product['fixedFields']
-                .firstWhere((field) => field['fieldName'] == 'Product Image URL')['value'] ?? '';
+            var fixedFields = List<Map<String, dynamic>>.from(product['fixedFields']);
+            var productName = fixedFields.firstWhere((field) => field['fieldName'] == 'Product Name', orElse: () => {'value': 'Unknown'})['value'];
+            var productPrice = fixedFields.firstWhere((field) => field['fieldName'] == 'Regular Price', orElse: () => {'value': 'Unknown'})['value'];
+            var productImageUrl = fixedFields.firstWhere((field) => field['fieldName'] == 'Product Image URL', orElse: () => {'value': ''})['value'];
             var vendorId = product['vendorId'];
 
             return FutureBuilder<DocumentSnapshot>(
@@ -103,7 +101,7 @@ class CategoryProductsPage extends StatelessWidget {
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => ProductDetailPage(product: product),
+                        builder: (context) => ProductDetailPage(productId: product.id),
                       ),
                     );
                   },

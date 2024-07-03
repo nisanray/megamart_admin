@@ -15,7 +15,7 @@ class _VendorDashboardState extends State<VendorDashboard> {
 
   final List<Widget> _pages = [
     VendorHomePage(),
-    VendorProductsPage(),
+    // VendorProductsPage(),
     VendorOrdersPage(),
     VendorAccountPage(),
   ];
@@ -122,14 +122,14 @@ class VendorHomePage extends StatelessWidget {
   }
 }
 
-class VendorProductsPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Products'),
-    );
-  }
-}
+// class VendorProductsPage extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//       child: Text('Products'),
+//     );
+//   }
+// }
 
 class VendorOrdersPage extends StatelessWidget {
   @override

@@ -53,6 +53,7 @@ dependencies:
   firebase_storage:
   firebase_analytics:
   intl:
+  cached_network_image:
 
 
 dev_dependencies:

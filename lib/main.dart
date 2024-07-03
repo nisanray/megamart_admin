@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'firebase_options.dart';
-import 'package:megamart_admin/views/admin_analytics_view.dart';
+// import 'package:megamart_admin/views/admin/admin_analytics_view.dart';
 import 'package:megamart_admin/views/admin_dashboards.dart';
 import 'package:megamart_admin/views/admin_loyalty_programs_view.dart';
 import 'package:megamart_admin/views/admin_notification_center_view.dart';
@@ -24,7 +24,7 @@ import 'package:megamart_admin/views/customer_wishlist_view.dart';
 import 'package:megamart_admin/views/main_screen.dart';
 // import 'package:megamart_admin/views/screens/sidebar_updated/sidebar_navigations.dart';
 import 'package:megamart_admin/views/vendor_dashboard_view.dart';
-import 'package:megamart_admin/views/vendor_notifications_view.dart';
+import 'package:megamart_admin/views/vendor/vendor_notifications_view.dart';
 import 'package:megamart_admin/views/vendor_order_management_view.dart';
 import 'package:megamart_admin/views/vendor_product_management_view.dart';
 import 'package:megamart_admin/views/vendor_profile_management_view.dart';
