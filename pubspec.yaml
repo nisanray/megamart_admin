@@ -54,6 +54,8 @@ dependencies:
   firebase_analytics:
   intl:
   cached_network_image:
+  json_annotation:
+  path_provider:
 
 
 dev_dependencies:
