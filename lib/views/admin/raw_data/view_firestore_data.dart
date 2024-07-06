@@ -6,7 +6,6 @@ import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../../utils/firestore_collection_manager.dart';
-// import 'collection_manager.dart'; // Import the collection manager
 
 class ViewFirestoreData extends StatefulWidget {
   @override
@@ -15,7 +14,7 @@ class ViewFirestoreData extends StatefulWidget {
 
 class _ViewFirestoreDataState extends State<ViewFirestoreData> {
   final CollectionManager collectionManager = CollectionManager();
-  FirebaseFirestore firestore = FirebaseFirestore.instance; // Initialize Firestore instance
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
   String? selectedCollection;
   String? selectedDocumentId;
   List<String> collections = [];
@@ -135,12 +134,17 @@ class _ViewFirestoreDataState extends State<ViewFirestoreData> {
 
     try {
       Map<String, dynamic> data = await collectionManager.fetchDocumentData(selectedCollection!, documentId);
+
+      // Add the collection name to the data
+      data['collection_name'] = selectedCollection;
+
       String jsonString = _formatJson(jsonEncode(data, toEncodable: customEncode));
       await saveJsonToFile(jsonString, '${documentId}_document.json');
     } catch (e) {
       showMessage('Error downloading document data: $e');
     }
   }
+
 
   String _formatJson(String jsonString) {
     var encoder = JsonEncoder.withIndent('  ');
@@ -270,11 +274,15 @@ class _ViewFirestoreDataState extends State<ViewFirestoreData> {
                   );
                 }).toList(),
               ),
-            if (!isFetchingCollections && hasMoreCollections)
-              ElevatedButton(
-                onPressed: () => fetchCollections(isInitialLoad: false),
-                child: Text('Load More Collections'),
-              ),
+            SizedBox(
+              height: 10,
+            ),
+
+            // if (!isFetchingCollections && hasMoreCollections)
+            //   ElevatedButton(
+            //     onPressed: () => fetchCollections(isInitialLoad: false),
+            //     child: Text('Load More Collections'),
+            //   ),
             if (documentIds.isEmpty && selectedCollection != null && !isFetchingDocumentIds)
               Text('No document IDs found.'),
             if (documentIds.isNotEmpty)
@@ -299,6 +307,10 @@ class _ViewFirestoreDataState extends State<ViewFirestoreData> {
                 padding: const EdgeInsets.all(8.0),
                 child: CircularProgressIndicator(),
               ),
+            SizedBox(
+              height: 10,
+            ),
+
             if (!isFetchingDocumentIds && hasMoreDocumentIds && selectedCollection != null)
               ElevatedButton(
                 onPressed: () => fetchDocumentIds(isInitialLoad: false),

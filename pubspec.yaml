@@ -55,7 +55,7 @@ dependencies:
   intl:
   cached_network_image:
   json_annotation:
-  path_provider:
+  path_provider: ^2.0.11
 
 
 dev_dependencies:

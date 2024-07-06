@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CollectionManager {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
-  List<String> collections = ['vendors', 'products', 'users']; // Manually maintained list of collections
+  List<String> collections = ['vendors', 'products', 'customers','cartItems','categories','orders']; // Manually maintained list of collections
 
   Future<List<String>> fetchCollections() async {
     try {
