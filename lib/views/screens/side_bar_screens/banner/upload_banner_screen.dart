@@ -3,10 +3,12 @@ import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'dart:io'; // Required to use File for loading image from file path.
+
 import 'package:megamart_admin/utils/colors.dart';
 
 class UploadBannerScreen extends StatefulWidget {
-  static const String routeName = '\UploadBannerScreen';
+  static const String routeName = '/UploadBannerScreen';
 
   @override
   State<UploadBannerScreen> createState() => _UploadBannerScreenState();
@@ -16,7 +18,7 @@ class _UploadBannerScreenState extends State<UploadBannerScreen> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseStorage _storage = FirebaseStorage.instance;
 
-  dynamic _image;
+  File? _image; // Using File for storing image path
   String? fileName;
 
   bool _uploading = false;
@@ -27,13 +29,13 @@ class _UploadBannerScreenState extends State<UploadBannerScreen> {
         allowMultiple: false, type: FileType.image);
     if (result != null) {
       setState(() {
-        _image = result.files.first.bytes;
-        fileName = result.files.first.name;
+        _image = File(result.files.first.path!); // Use File to get the path
+        fileName = result.files.first.name; // Get the file name
       });
     }
   }
 
-  _uploadBannerToStorage(dynamic image) async {
+  _uploadBannerToStorage(File image) async {
     Reference ref = _storage.ref().child('Banners').child(fileName!);
 
     String contentType;
@@ -45,13 +47,14 @@ class _UploadBannerScreenState extends State<UploadBannerScreen> {
     } else {
       throw 'Unsupported file type';
     }
-    UploadTask uploadTask = ref.putData(image, SettableMetadata(contentType: contentType));
+
+    UploadTask uploadTask = ref.putFile(image, SettableMetadata(contentType: contentType));
     uploadTask.snapshotEvents.listen((TaskSnapshot snapshot) {
       setState(() {
-        _uploadProgress =
-            snapshot.bytesTransferred / snapshot.totalBytes;
+        _uploadProgress = snapshot.bytesTransferred / snapshot.totalBytes;
       });
     });
+
     TaskSnapshot snapshot = await uploadTask;
     String downloadUrl = await snapshot.ref.getDownloadURL();
     return downloadUrl;
@@ -61,7 +64,7 @@ class _UploadBannerScreenState extends State<UploadBannerScreen> {
     if (_image != null) {
       EasyLoading.show();
       try {
-        String? imageUrl = await _uploadBannerToStorage(_image);
+        String? imageUrl = await _uploadBannerToStorage(_image!);
         if (imageUrl != null) {
           await _firestore.collection('banners').doc(fileName).set({
             'image': imageUrl,
@@ -92,8 +95,14 @@ class _UploadBannerScreenState extends State<UploadBannerScreen> {
   @override
   Widget build(BuildContext context) {
     double maxImageWidth = MediaQuery.of(context).size.width * 0.5;
-    return Container(
-      color: AppColors.backgroundColor,
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Upload Banner'),
+        backgroundColor: AppColors.buttonColor,
+      ),
+      body: Container(
+        color: AppColors.backgroundColor,
         padding: EdgeInsets.all(16),
         child: SingleChildScrollView(
           child: Column(
@@ -109,9 +118,9 @@ class _UploadBannerScreenState extends State<UploadBannerScreen> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: _image != null
-                        ? Image.memory(
+                        ? Image.file(
                       _image!,
-                      fit: BoxFit.scaleDown,
+                      fit: BoxFit.contain,
                       width: maxImageWidth,
                     )
                         : Container(
@@ -151,25 +160,26 @@ class _UploadBannerScreenState extends State<UploadBannerScreen> {
                     ),
                 ],
               ),
-              SizedBox(height: 4),
+              SizedBox(height: 10),
               Container(
                 decoration: BoxDecoration(
                   color: Colors.blueAccent.shade100,
                   borderRadius: BorderRadius.circular(5),
                 ),
                 child: Padding(
-                  padding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   child: SingleChildScrollView(
                     scrollDirection: Axis.vertical,
-                    child: Text(fileName ?? ""),
+                    child: Text(
+                      fileName ?? "No file chosen", // Display file name or fallback
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
               ),
               SizedBox(height: 20),
               Padding(
-                padding: const EdgeInsets.only(
-                    top: 15, bottom: 30, left: 20, right: 20),
+                padding: const EdgeInsets.only(top: 15, bottom: 30, left: 20, right: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -184,10 +194,11 @@ class _UploadBannerScreenState extends State<UploadBannerScreen> {
                           child: Padding(
                             padding: const EdgeInsets.all(15),
                             child: Center(
-                                child: Text(
-                                  'Pick a banner',
-                                  style: TextStyle(color: Colors.white),
-                                )),
+                              child: Text(
+                                'Pick a banner',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -195,9 +206,7 @@ class _UploadBannerScreenState extends State<UploadBannerScreen> {
                     SizedBox(width: 20),
                     Expanded(
                       child: InkWell(
-                        onTap: () {
-                          _uploadImageToFirestore();
-                        },
+                        onTap: _uploadImageToFirestore,
                         child: Container(
                           decoration: BoxDecoration(
                             color: AppColors.buttonColor,
@@ -206,10 +215,11 @@ class _UploadBannerScreenState extends State<UploadBannerScreen> {
                           child: Padding(
                             padding: const EdgeInsets.all(15),
                             child: Center(
-                                child: Text(
-                                  'Upload image',
-                                  style: TextStyle(color: Colors.white),
-                                )),
+                              child: Text(
+                                'Upload image',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -220,7 +230,7 @@ class _UploadBannerScreenState extends State<UploadBannerScreen> {
             ],
           ),
         ),
-
+      ),
     );
   }
 }
